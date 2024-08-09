@@ -446,6 +446,131 @@ add_num()
 
 
 
+install.packages("readr")
+install.packages("dplyr")
+install.packages("tidyr")
+install.packages("ggplot2")
+install.packages("fast dummies")
+
+
+
+#load necessary libraries
+library(readr)
+library(dplyr)
+
+
+#load the dataset
+file_path<-"C:/Users/student.NIET-66/Downloads/Hospital+Patient+Records/patients.csv"
+data<-read_csv(file_path)
+data
+
+
+glimpse(data)
+summary(data)
+head(data)
+tail(data)
+
+
+library(dplyr)
+library(tidyr)
+library(fastDummies)
+
+colSums(is.na(data))
+
+data_cleaned<-na.omit(data)
+
+data_cleaned<-data%>%replace_na(list(yearsExperience=median
+                                     (data$YearsExperience,na.rm=TRUE),
+                                     salary=median(data$salary,na.rm=TRUE)))
+
+
+library(ggplot2)
+
+#scatter plot
+ggplot(data,aes(x=YearsExperience,y=Salary))+
+  geom_point()+
+  labs(title="scatter plot of salary vs.Years of Experience",
+       x="Years of Experiance",
+       y="Salary")
+
+
+
+data("airquality")
+View("airquality")
+airquality[1]
+
+
+plot(airquality$Ozone,airquality$Wind)
+plot(airquality$Ozone,airquality$Wind,col='red')
+plot(airquality$Ozone,airquality$Wind,type = 'h',col='blue')
+
+plot(airquality)
+
+plot(airquality$Ozone,xlab = 'ozone Concentration',ylab = 'no of Instances',
+     main = 'ozone levels in NY city',col='red',pch=16 )
+
+hist(airquality$Solar.R)
+hist(airquality$Solar.R,main='solar radiation value in R',col='blue')
+
+Temperature<-airquality$Temp
+hist(Temperature)
+
+
+h<-hist(Temperature,ylim = c(0,40))
+text(h$mids,h$counts,labels=h$counts,adj=c(0.5,-0.5))
+hist(Temperature,col='purple')
+
+
+hist(Temperature,
+     main = "Maximum daily temprature at La Guardia Airport",
+     xlab = "Temprature in degrees Farenheit",
+     xlim = c(50,100),
+     col="red",
+     border = "black",
+     breaks = c(55,60,70,75,80,100)
+     )
+
+
+install.packages("caret")
+library(caret)
+install.packages("ggplot2")
+library(ggplot2)
+
+
+
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(caret)
+
+
+salary_data<-read_csv("C:/Users/student.NIET-66/Downloads/Hospital+Patient+Records/patients.csv")
+
+x<-salary_data%>%select(-Salary)
+y<-salary_data$salary
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
